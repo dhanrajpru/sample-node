@@ -1,0 +1,17 @@
+version: '3.0'
+
+services:
+
+  nginx:
+    image: nginx
+    ports:
+    - "80:80"
+    volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    - ./nginx/www:/etc/nginx/html
+    depends_on:
+    - sample-node
+
+  sample-node:
+    build: .
+    
